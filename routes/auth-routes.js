@@ -15,11 +15,11 @@ router.get('/logout', (req, res) => {
 //auth with goolge
 router.get('/google', passport.authenticate('google', { // authenticate is method. 
     scope: ['profile']  // what you want toretrive.
-}));
+}));  // 只是从google认证, get a code from url
 
-//callback route for google to redirect to
+//callback route for google to redirect 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {  // send back to consent screen so the user can log in
-    res.send('you reached the callback uri');
+    res.send('you reached the callback uri');  // 从google那里那用户资料
 }); // authenticated with Google and we've saiid to passport, this user is allowing to their information
 
 module.exports = router;
